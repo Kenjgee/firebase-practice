@@ -39,3 +39,40 @@
 .nav__avatar:hover {
   background: #2d1670;
 }
+
+.nav__skeleton {
+  width: 160px;
+  height: 44px;               /* same height as the avatar: nav won't jump */
+  border-radius: 8px;
+  background: #e8e8ef;
+  animation: navPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes navPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.nav__btn {
+  padding: 10px 20px;
+  border: 1px solid #d8d8e0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav__btn:hover {
+  background: #f4f4f8;
+}
+
+.nav__btn--primary {
+  border-color: #3b1e8f;
+  background: #3b1e8f;
+  color: #fff;
+}
+
+.nav__btn--primary:hover {
+  background: #2d1670;
+}

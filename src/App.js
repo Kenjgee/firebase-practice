@@ -8,13 +8,23 @@ function App() {
   const [user, setUser] = React.useState(null);
   const[loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => { 
-       onAuthStateChanged(auth, (currentUser) => {
+    React.useEffect(() => {
+    let timer;
+
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+
+      timer = setTimeout(() => {
+        setLoading(false);
+      }, 300);
     });
 
-  }, [])
+    return () => {
+      unsubscribe();
+      clearTimeout(timer);
+    };
+  }, []);
+
   function register() {
     console.log("register");
     createUserWithEmailAndPassword(auth, "email@example.com", "test123")
