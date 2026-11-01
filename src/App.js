@@ -41,7 +41,7 @@ function App() {
 
   function logout() {
         signOut(auth);
-        setUser({});
+        setUser(user);
   }
       
   

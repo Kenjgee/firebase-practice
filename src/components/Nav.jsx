@@ -1,6 +1,10 @@
+import logo from "../assets/logo1.png";
+
 const Nav = ({ user, loading, onLogin, onRegister, onLogout }) => {
   return (
     <nav className="nav">
+      <img src={logo} alt="Logo" className="nav__logo" />
+
       <div className="nav__actions">
         {loading ? (
           <div className="nav__skeleton" />
@@ -15,8 +19,6 @@ const Nav = ({ user, loading, onLogin, onRegister, onLogout }) => {
           </>
         )}
       </div>
-
-      <h1 className="nav__logo">My Test Logo</h1>
     </nav>
   );
 };

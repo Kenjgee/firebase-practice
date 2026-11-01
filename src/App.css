@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* logo left, buttons right */
+  gap: 24px;
+  padding: 16px 48px;
+  border-bottom: 1px solid #ececec;
+}
+
+.nav__logo {
+  height: 44px;    /* your logo is 720×768, so height drives it */
+  width: auto;
+  display: block;
+}
