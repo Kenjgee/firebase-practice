@@ -16,7 +16,7 @@ const Nav = ({ user, loading, onLogin, onRegister, onLogout }) => {
         )}
       </div>
 
-      <h1 className="nav__logo">Financiply</h1>
+      <h1 className="nav__logo">My Test Logo</h1>
     </nav>
   );
 };
