@@ -9,13 +9,11 @@ function App() {
   const[loading, setLoading] = React.useState(true);
 
   React.useEffect(() => { 
-    onAuthStateChanged(auth, (user) => {
+       onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       setLoading(false);
-      console.log(user);
-      if (user) {
-        setUser(user);
-      } 
     });
+
   }, [])
   function register() {
     console.log("register");
@@ -40,11 +38,8 @@ function App() {
   }
 
   function logout() {
-        signOut(auth);
-        setUser(user);
+    signOut(auth);
   }
-      
-  
 
   return (
     <div className="App">

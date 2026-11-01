@@ -12,3 +12,30 @@
   width: auto;
   display: block;
 }
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.nav__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #3b1e8f;   /* purple */
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav__avatar:hover {
+  background: #2d1670;
+}
