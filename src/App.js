@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import Nav from "./components/Nav";
 import { auth } from "./firebase/init";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = React.useState(null);
   const[loading, setLoading] = React.useState(true);
 
   React.useEffect(() => { 
@@ -47,11 +48,14 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={register}>Register</button>
-      <button onClick={login}>Login</button>
-      <button onClick={logout}>Logout</button>
-      {loading ? "Loading..." : user.email}
-    </div>
+      <Nav
+        user={user}
+        loading={loading}
+        onLogin={login}
+        onRegister={register}
+        onLogout={logout}
+      />
+          </div>
   );
 }
 
