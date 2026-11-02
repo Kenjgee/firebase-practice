@@ -2,11 +2,20 @@ import React from "react";
 import "./App.css";
 import Nav from "./components/Nav";
 import { auth, db } from "./firebase/init";
+import { collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [user, setUser] = React.useState(null);
   const[loading, setLoading] = React.useState(true);
+
+  function createPost() {
+    const post = {
+      title:"Land a $100k job",
+      description:"Finish Frontend Simplified"
+    };
+    addDoc(collection(db, "posts"), post);
+  }
 
     React.useEffect(() => {
     let timer;
@@ -60,6 +69,7 @@ function App() {
         onRegister={register}
         onLogout={logout}
       />
+      <button onClick={createPost}>Create Post</button>
           </div>
   );
 }
