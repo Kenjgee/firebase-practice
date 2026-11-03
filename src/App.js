@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Nav from "./components/Nav";
 import { auth, db } from "./firebase/init";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, doc, query, where } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 function App() {
@@ -11,11 +11,36 @@ function App() {
 
   function createPost() {
     const post = {
-      title:"Land a $100k job",
-      description:"Finish Frontend Simplified"
+      title:"Finish interview Section",
+      description:"Do Frontend Simplified",
+      uid: user?.uid
     };
     addDoc(collection(db, "posts"), post);
   }
+
+  async function getAllPosts() {
+    const { docs } = await getDocs(collection(db, "posts"));
+    const posts = docs.map(elem => ({...elem.data(), id: elem.id}));
+    console.log(posts);
+  }
+
+  async function getPostById() {
+    const hardcodedID = "bEEwZW7xbtZ8A5DytLX2"
+    const postRef = doc(db, "posts", hardcodedID);
+    const postSnapshot = await getDoc(postRef);
+    const post = postSnapshot.data();
+    console.log(post);
+  }
+
+  async function getPostsByUid() {
+    const postCollectionRef = await query(
+      collection(db, "posts"),
+      where("uid", "==", user?.uid)
+    );
+    const { docs } = await getDocs(postCollectionRef);
+    console.log(docs.map(doc => doc.data()));
+  }
+
 
     React.useEffect(() => {
     let timer;
@@ -70,6 +95,9 @@ function App() {
         onLogout={logout}
       />
       <button onClick={createPost}>Create Post</button>
+      <button onClick={getAllPosts}>Get All Posts</button>
+      <button onClick={getPostById}>Get Post By ID</button>
+      <button onClick={getPostsByUid}>Get Posts By UID</button>
           </div>
   );
 }
