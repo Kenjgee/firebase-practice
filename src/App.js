@@ -125,7 +125,7 @@ function App() {
       />
       <button onClick={createPost}>Create Post</button>
       <button onClick={getAllPosts}>Get All Posts</button>
-      <button onClick={getPostById}>Get Post By ID</button>
+      <button onClick={() => getPostById("bEEwZW7xbtZ8A5DytLX2")}>Get Post By ID</button>
       <button onClick={getPostsByUid}>Get Posts By UID</button>
       <button onClick={updatePost}>Update Post</button>
       <button onClick={deletePost}>Delete Post</button>
